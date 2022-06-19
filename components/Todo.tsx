@@ -19,12 +19,15 @@ export const Todo = () => {
         return todo;
       }
     });
-    setTodos(updateItem)
+    setTodos(updateItem);
+  };
+  const handleReset = () => {
+    setTodos([]);
   };
   return (
     <div className="font-sans bg-[#2d3748]  text-black min-h-screen">
       <div className="flex flex-col justify-center items-center mx-20">
-        <h1 className="text-xl text-white">TAILWINDCSS TODOS</h1>
+        <h1 className="text-xl text-white">TODO APP</h1>
         <div className="flex items-center justify-center">
           <div className="border rounded overflow-hidden flex">
             <input
@@ -39,6 +42,12 @@ export const Todo = () => {
               onClick={handleAdd}
             >
               Add
+            </button>
+            <button
+              className="flex items-center justify-center px-4 border-l text-white"
+              onClick={handleReset}
+            >
+              Reset All
             </button>
           </div>
         </div>
