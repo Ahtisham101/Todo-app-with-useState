@@ -13,6 +13,14 @@ export const Todo = () => {
       setInput("");
     }
   };
+  const handleDelete = (id: number) => {
+    const updateItem = todos.filter((todo, index) => {
+      if (id !== index) {
+        return todo;
+      }
+    });
+    setTodos(updateItem)
+  };
   return (
     <div className="font-sans bg-[#2d3748]  text-black min-h-screen">
       <div className="flex flex-col justify-center items-center mx-20">
@@ -34,12 +42,19 @@ export const Todo = () => {
             </button>
           </div>
         </div>
-        <ul className="list-none mt-5">
+
+        <ul className="list-none mt-5 ">
           {todos.map((todo, index) => {
             return (
-              <li key={index} className="text-white">
-                {todo}
-              </li>
+              <div key={index} className="flex justify-between space-x-10">
+                <li className="text-white">{todo}</li>
+                <button
+                  className="text-red-700"
+                  onClick={() => handleDelete(index)}
+                >
+                  Delete
+                </button>
+              </div>
             );
           })}
         </ul>
